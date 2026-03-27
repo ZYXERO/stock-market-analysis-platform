@@ -49,17 +49,25 @@ This project provides a platform for:
 
 ---
 
-## 🖥️ Example Output
+## 🖥️ Visual Output
 
-Multiple stock charts rendered simultaneously:
+### 📊 Phase 1 — Single Stock Visualization
 
-* Each stock panel includes:
+* Candlestick + volume chart for a single selected stock
+* Basic filtering and data exploration
 
-  * Candlestick chart (price)
-  * Volume chart
-* Supports comparison across multiple symbols
+![Phase 1 Output](images/phase1-chart.png)
 
-*(Phase 2 screenshot can be added here)*
+---
+
+### 📈 Phase 2 — Multi-Stock Comparison
+
+* Multiple stocks displayed simultaneously
+* Dynamic chart panels for each selected symbol
+* Shared filtering across all stocks
+* Closer to real-world trading platform experience
+
+![Phase 2 Output](images/phase2-multistock.png)
 
 ---
 
@@ -125,6 +133,10 @@ stock-market-analysis-platform
 │   └── candlestick-visualization
 │       ├── Phase1_CandlestickVisualization
 │       └── Phase2_MultiStockAnalysis
+│
+├── images
+│   ├── phase1-chart.png
+│   └── phase2-multistock.png
 │
 ├── README.md
 ├── LICENSE
