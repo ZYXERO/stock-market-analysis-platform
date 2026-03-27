@@ -1,4 +1,4 @@
-# Stock Market Analysis Platform
+# 📈 Stock Market Analysis Platform
 
 A desktop stock market visualization application built using **C# and .NET Windows Forms**.
 
@@ -8,230 +8,170 @@ This project focuses on applying **financial data processing, chart-based visual
 
 ---
 
-## Project Overview
+## 🚀 Project Overview
 
 Financial markets generate large volumes of time-series data. Tools that can parse, process, and visualize this information are essential for understanding market trends and price movement.
 
-This project provides a simple platform for:
+This project provides a platform for:
 
-- Importing historical stock data
-- Parsing OHLC market information
-- Visualizing candlestick price movement
-- Displaying trading volume
-- Filtering datasets by time range and aggregation level
-
-The goal of the project is to explore how **data visualization and object-oriented architecture** can be applied to financial datasets in a desktop application.
-
----
-
-## Current Features (Phase 1)
-
-### Historical CSV Data Loading
-
-The application loads stock datasets using CSV files in the **Yahoo Finance historical data format**.
-
-Each record contains:
-
-- Date
-- Open price
-- High price
-- Low price
-- Close price
-- Adjusted close
-- Trading volume
-
-The data is parsed and converted into structured objects that can be used for visualization and analysis.
+* Importing historical stock data
+* Parsing OHLC market information
+* Visualizing candlestick price movement
+* Displaying trading volume
+* Filtering datasets by time range and aggregation level
+* Comparing multiple stocks simultaneously
 
 ---
 
-### Candlestick Chart Visualization
+## 📊 Features
 
-Stock price movements are displayed using **candlestick charts**, a common financial visualization technique.
+### ✅ Phase 1 — Data Loading & Visualization
 
-Each candlestick represents a trading period and shows:
-
-- Opening price
-- Closing price
-- Highest price
-- Lowest price
-
-This makes it easier to observe market trends and volatility over time.
-
----
-
-### Trading Volume Visualization
-
-The platform also visualizes **trading volume**, which represents the number of shares traded during a period.
-
-Volume data helps provide context for price movement and can highlight periods of increased market activity.
+* CSV data ingestion (Yahoo Finance format)
+* Candlestick chart visualization
+* Volume chart display
+* Date range filtering
+* Time aggregation (Daily, Weekly, Monthly)
+* Moving average overlay
+* CSV validation and error handling
+* Export filtered datasets
 
 ---
 
-### Interactive Data Filtering
+### 🚧 Phase 2 — Multi-Stock Comparison
 
-Users can explore stock data through several filtering options:
-
-- **Stock Symbol Selection**
-- **Custom Date Range**
-- **Time Aggregation**
-  - Daily
-  - Weekly
-  - Monthly
-
-Filtering dynamically updates the dataset and chart visualization.
+* Multi-stock selection via checkbox list
+* Dynamic chart panel generation
+* Side-by-side stock comparison
+* Shared filtering across all stocks
+* Combined price + volume chart per stock
+* Improved UI layout using FlowLayoutPanel
 
 ---
 
-### Moving Average Overlay
+## 🖥️ Example Output
 
-The application includes a **moving average overlay** to smooth short-term price fluctuations and help highlight long-term trends.
+Multiple stock charts rendered simultaneously:
 
-Moving averages are widely used in financial analysis to better understand market direction.
+* Each stock panel includes:
 
----
+  * Candlestick chart (price)
+  * Volume chart
+* Supports comparison across multiple symbols
 
-### CSV Data Validation
-
-The system performs validation checks when loading datasets to ensure the integrity of the data.
-
-This helps detect:
-
-- Missing values
-- Incorrect formatting
-- Malformed rows
-
-Invalid rows are ignored to prevent errors during processing or visualization.
+*(Phase 2 screenshot can be added here)*
 
 ---
 
-### Export Filtered Data
+## 🧠 Architecture Overview
 
-After applying filters, users can export the processed dataset back to a CSV file.
+The application follows a modular object-oriented design:
 
-This allows filtered or aggregated data to be reused for external analysis or additional tools.
+### Models
 
----
+* Candlestick
+* StockDataset
 
-## Architecture Overview
+### Services
 
-The application follows a simple **object-oriented architecture** separating responsibilities between data processing, visualization, and user interface interaction.
+* CSV loading
+* Data aggregation
+* Stock repository
 
-Core responsibilities include:
+### Rendering
 
-### Data Processing
+* Chart generation (candlestick + volume)
 
-- CSV parsing
-- dataset validation
-- representation of candlestick data as structured objects
+### UI
 
-### Visualization
-
-- candlestick chart rendering
-- trading volume display
-- moving average calculations
-
-### User Interface
-
-- dataset filtering
-- chart updates
-- data display using tables and chart controls
-
-This modular design allows the system to expand as additional analysis capabilities are introduced.
+* User interaction
+* Dynamic panel generation
+* Filtering controls
 
 ---
 
-## Technologies Used
+## ⚙️ Technologies Used
 
 ### Language
 
-- **C#**
+* C#
 
 ### Framework
 
-- **.NET Windows Forms**
+* .NET 8 Windows Forms
 
 ### Libraries / Components
 
-- Windows Forms Chart Control
-- DataGridView
-- CSV file processing
+* WinForms Chart Control
+* DataGridView
+* CSV processing
 
 ---
 
-## Example Visualization
+## 📁 Project Structure
 
-Example candlestick chart generated by the application.
-
-![Candlestick Chart](images/phase1-chart.png)
-
-*(Screenshot will be added here)*
-
----
-
-## Project Structure
-
-
+```
 stock-market-analysis-platform
 │
-├── src
-│ └── StockMarketAnalysisApp
+├── data
+├── docs
+│   ├── PHASE_1.md
+│   ├── PHASE_2.md
+│   ├── ARCHITECTURE.md
+│   ├── DEMO.md
+│   └── SETUP.md
 │
-├── images
-│ └── phase1-chart.png
+├── src
+│   └── candlestick-visualization
+│       ├── Phase1_CandlestickVisualization
+│       └── Phase2_MultiStockAnalysis
 │
 ├── README.md
 ├── LICENSE
 └── .gitignore
-
-
----
-
-## Running the Project
-
-### Requirements
-
-- Visual Studio 2022 or newer
-- .NET Desktop Development workload installed
-
-### Steps
-
-1. Clone the repository
-
-
-git clone https://github.com/ZYXERO/stock-market-analysis-platform.git
-
-
-2. Open the solution in **Visual Studio**
-
-3. Build the project
-
-4. Run the application
-
-5. Load a stock CSV dataset to begin visualization
+```
 
 ---
 
-## Data Format
+## 🧪 Running the Project
 
-The application expects stock data in a CSV format similar to **Yahoo Finance historical downloads**.
+```bash
+cd src/candlestick-visualization/Phase2_MultiStockAnalysis
+dotnet run
+```
 
-Example format:
+---
 
+## 📌 Data Format
 
+Expected CSV format (Yahoo Finance style):
+
+```
 Date,Open,High,Low,Close,Adj Close,Volume
 2023-01-03,130.28,130.90,124.17,125.07,125.07,112117500
-
-
----
-
-## Future Development
-
-This project is being developed incrementally with additional features planned in future iterations.
-
-Future work will focus on expanding analytical capabilities and improving visualization tools.
+```
 
 ---
 
-## License
+## 🔮 Future Development (Phase 3)
+
+* Technical indicators (RSI, MACD)
+* Moving averages (SMA, EMA)
+* Pattern recognition
+* Real-time data integration
+* Advanced analytics dashboard
+
+---
+
+## 💡 Key Takeaways
+
+* Built a full pipeline from raw CSV data to visual analysis
+* Designed scalable architecture for financial data applications
+* Implemented multi-stock comparison similar to trading platforms
+* Focused on clean separation of concerns and extensibility
+
+---
+
+## 📄 License
 
 This project is licensed under the **MIT License**.
