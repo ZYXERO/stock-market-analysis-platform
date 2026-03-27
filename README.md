@@ -56,7 +56,7 @@ This project provides a platform for:
 * Candlestick + volume chart for a single selected stock
 * Basic filtering and data exploration
 
-![Phase 1 Output](images/phase1-chart.png)
+![Phase 1 Output](images/phase1-chart.jpg)
 
 ---
 
@@ -67,7 +67,7 @@ This project provides a platform for:
 * Shared filtering across all stocks
 * Closer to real-world trading platform experience
 
-![Phase 2 Output](images/phase2-multistock.png)
+![Phase 2 Output](images/phase2-multistock.jpg)
 
 ---
 
