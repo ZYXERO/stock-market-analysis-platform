@@ -1,0 +1,49 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "candlestick-visualization", "candlestick-visualization", "{D92995D0-E06F-B508-C8C8-E816F664C645}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Phase1_CandlestickVisualization", "Phase1_CandlestickVisualization", "{890A5D12-EB9A-D82C-4DF4-20C761155051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandlestickVisualization", "src\candlestick-visualization\Phase1_CandlestickVisualization\CandlestickVisualization.csproj", "{B9C4FFB0-B9C2-F9EF-8FE5-9419FFB9F033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase2_MultiStockAnalysis", "src\candlestick-visualization\Phase2_MultiStockAnalysis\Phase2_MultiStockAnalysis.csproj", "{09399D32-A588-09AE-C139-6926D86F2736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phase3_TechnicalAnalysis", "src\candlestick-visualization\Phase3_TechnicalAnalysis\Phase3_TechnicalAnalysis.csproj", "{CFB1666F-307A-0969-8B95-DE4AFEC932F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9C4FFB0-B9C2-F9EF-8FE5-9419FFB9F033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C4FFB0-B9C2-F9EF-8FE5-9419FFB9F033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9C4FFB0-B9C2-F9EF-8FE5-9419FFB9F033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9C4FFB0-B9C2-F9EF-8FE5-9419FFB9F033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09399D32-A588-09AE-C139-6926D86F2736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09399D32-A588-09AE-C139-6926D86F2736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09399D32-A588-09AE-C139-6926D86F2736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09399D32-A588-09AE-C139-6926D86F2736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB1666F-307A-0969-8B95-DE4AFEC932F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB1666F-307A-0969-8B95-DE4AFEC932F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB1666F-307A-0969-8B95-DE4AFEC932F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB1666F-307A-0969-8B95-DE4AFEC932F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D92995D0-E06F-B508-C8C8-E816F664C645} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{890A5D12-EB9A-D82C-4DF4-20C761155051} = {D92995D0-E06F-B508-C8C8-E816F664C645}
+		{B9C4FFB0-B9C2-F9EF-8FE5-9419FFB9F033} = {890A5D12-EB9A-D82C-4DF4-20C761155051}
+		{09399D32-A588-09AE-C139-6926D86F2736} = {D92995D0-E06F-B508-C8C8-E816F664C645}
+		{CFB1666F-307A-0969-8B95-DE4AFEC932F3} = {D92995D0-E06F-B508-C8C8-E816F664C645}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24857E6A-7C41-418A-BB62-6FEA8D6D1F09}
+	EndGlobalSection
+EndGlobal

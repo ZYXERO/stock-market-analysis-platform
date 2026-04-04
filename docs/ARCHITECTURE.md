@@ -1,176 +1,191 @@
-# Project Architecture
+```md id="b9x8pt"
+# 🧠 Architecture Overview — Stock Market Analysis Platform
 
-This document describes the structure and components of the Candlestick Visualization module.
+This document outlines the system design and architecture used to build the Stock Market Analysis Platform.
 
----
-
-## High-Level Overview
-
-The application reads historical stock data from CSV files, converts them into structured objects, and renders candlestick charts using the Windows Forms charting library.
-
-The architecture separates the responsibilities of:
-
-- data loading
-- data modeling
-- visualization
-- user interface
+The application follows a **modular, layered architecture** to ensure scalability, maintainability, and clear separation of concerns.
 
 ---
 
-## Core Components
+## 🏗️ High-Level Architecture
 
-### Program.cs
+The system is divided into five core layers:
 
-Entry point of the application.
+```
 
-Responsible for starting the Windows Forms application and launching the main interface.
+Data Layer → Models → Services → Rendering → UI
 
+```
 
-Application.Run(new MainForm());
-
-
----
-
-### MainForm.cs
-
-The primary user interface controller.
-
-Responsibilities include:
-
-- handling user input
-- loading CSV datasets
-- filtering data by date
-- updating chart visualizations
-- displaying tabular stock data
-
-The form coordinates interactions between the UI and backend logic.
+Each layer has a specific responsibility, allowing the application to evolve across phases without breaking existing functionality.
 
 ---
 
-### MainForm.Designer.cs
+## 📦 Core Components
 
-Auto-generated Windows Forms designer file.
+### 📁 Models
 
-Responsible for defining the layout and UI components such as:
+Represents structured data used across the application.
 
-- text boxes
-- date pickers
-- buttons
-- chart controls
-- data tables
+- **Candlestick**
+  - Stores OHLC (Open, High, Low, Close) data
+  - Includes volume and timestamp
 
----
+- **StockDataset**
+  - Groups candlestick data by:
+    - Daily
+    - Weekly
+    - Monthly
 
-### Candlestick.cs
-
-Defines the data model representing a single trading period.
-
-Each object contains:
-
-- Date
-- OpeningPrice
-- MaximumPrice
-- MinimumPrice
-- ClosingPrice
-- Volume
-
-This represents standard **OHLCV financial market data**.
+- **IndicatorPoint**
+  - Represents calculated indicator values (SMA / EMA)
+  - Contains date + computed value
 
 ---
 
-### CsvLoader.cs
+### ⚙️ Services
 
-Handles reading stock data from CSV files.
+Handles data ingestion and transformation logic.
 
-Responsibilities include:
+- **CsvLoader**
+  - Parses CSV files
+  - Converts raw data into Candlestick objects
 
-- reading CSV file lines
-- parsing numeric and date values
-- validating data
-- converting rows into `Candlestick` objects
+- **DataAggregator**
+  - Filters data by:
+    - Date range
+    - Time interval (Daily / Weekly / Monthly)
 
-Output:
-
-
-List<Candlestick>
-
-
-This list becomes the application's internal dataset.
+- **StockRepository**
+  - Loads all datasets from `/data` directory
+  - Organizes them into structured collections
 
 ---
 
-### ChartRenderer.cs
+### 📊 Indicators (Phase 3)
 
-Responsible for rendering candlestick charts and volume charts.
+Responsible for technical analysis calculations.
 
-Uses the .NET library:
+- **MovingAverageCalculator (SMA)**
+  - Calculates simple moving average over a given period
 
-
-System.Windows.Forms.DataVisualization.Charting
-
-
-Responsibilities include:
-
-- creating candlestick chart points
-- plotting trading volume
-- formatting chart axes
-- updating charts when data changes
+- **ExponentialMovingAverageCalculator (EMA)**
+  - Calculates weighted moving average
+  - Gives higher importance to recent data
 
 ---
 
-## Data Flow
+### 🎨 Rendering Layer
 
-The application follows this processing pipeline:
+Responsible for visualization.
 
+- **ChartRenderer**
+  - Renders:
+    - Candlestick charts
+    - Volume charts
+    - Indicator overlays (SMA / EMA)
+  - Uses WinForms DataVisualization library
 
-CSV Dataset
+---
+
+### 🖥️ UI Layer
+
+Handles user interaction and layout.
+
+- **MainForm**
+  - Core application interface
+  - Controls:
+    - Date selection
+    - Stock selection
+    - Indicator toggles
+  - Triggers data processing and rendering
+
+- **StockChartPanelFactory**
+  - Dynamically generates chart panels for each stock
+  - Enables scalable multi-stock rendering (Phase 2+)
+
+---
+
+## 🔄 Data Flow
+
+```
+
+CSV Files → CsvLoader → Candlestick Objects
 ↓
-CsvLoader
+StockRepository
 ↓
-List<Candlestick>
+DataAggregator (filtering)
 ↓
-MainForm
+Indicator Calculations (SMA / EMA)
 ↓
 ChartRenderer
 ↓
-Candlestick Chart + Volume Chart
+UI (MainForm)
 
-
----
-
-## Repository Structure
-
-
-StockMarketAnalysisPlatform
-│
-├─ candlestick-visualization
-│ ├─ CandlestickVisualization.sln
-│ └─ CandlestickVisualization
-│ ├─ Candlestick.cs
-│ ├─ CsvLoader.cs
-│ ├─ ChartRenderer.cs
-│ ├─ MainForm.cs
-│ ├─ MainForm.Designer.cs
-│ ├─ Program.cs
-│ └─ CandlestickVisualization.csproj
-│
-├─ data
-│
-├─ docs
-│ ├─ SETUP.md
-│ ├─ DEMO.md
-│ └─ ARCHITECTURE.md
-
+```
 
 ---
 
-## Future Extensions
+## 🧩 Design Principles
 
-Planned enhancements for the Stock Market Analysis Platform may include:
+### 1. Separation of Concerns
+Each component handles a specific responsibility:
+- Data parsing
+- Data processing
+- Visualization
+- User interaction
 
-- multi-stock chart comparison
-- technical indicators (moving averages, RSI, MACD)
-- pattern recognition algorithms
-- automated trading signal detection
-- real-time data integration
-- exporting filtered datasets
+---
+
+### 2. Modularity
+Each phase builds on top of previous functionality without modifying core logic.
+
+- Phase 1 → Base visualization
+- Phase 2 → Multi-stock scaling
+- Phase 3 → Indicator overlay
+
+---
+
+### 3. Extensibility
+New features can be added easily:
+- Additional indicators (RSI, MACD)
+- New chart types
+- API integration
+
+---
+
+### 4. Reusability
+Core services (like CSV loading and filtering) are reused across all phases.
+
+---
+
+## 📈 Evolution Across Phases
+
+| Phase | Architecture Impact |
+|------|--------------------|
+| Phase 1 | Core pipeline (CSV → Chart) |
+| Phase 2 | UI scalability + multi-entity rendering |
+| Phase 3 | Analytical layer (Indicators) |
+
+---
+
+## 🚀 Future Architecture Enhancements
+
+- Introduce MVC or MVVM pattern
+- Add service abstraction layers (interfaces)
+- Integrate external APIs (real-time data)
+- Add caching for performance optimization
+
+---
+
+## 💡 Summary
+
+This architecture enables:
+
+- Clean separation between logic and UI
+- Easy expansion for new financial features
+- Scalable visualization for multiple datasets
+- Structured approach to technical analysis implementation
+
+The system evolves naturally across phases while maintaining code clarity and maintainability.
+```

@@ -1,137 +1,138 @@
-# Demo Guide
+````md
+# 🎬 Demo — Stock Market Analysis Platform
 
-This guide explains how to use the Candlestick Visualization interface once the application is running.
+This document provides a walkthrough of the application and how to demonstrate its core functionality across all phases.
 
 ---
 
-## Launch the Application
+## 🎯 Demo Objective
 
-From the project directory:
+Show how the platform:
 
+- Loads and processes stock data
+- Visualizes price movement using candlestick charts
+- Compares multiple stocks simultaneously
+- Applies technical indicators (SMA & EMA)
 
-cd candlestick-visualization/CandlestickVisualization
+---
+
+## 🧪 Demo Setup
+
+### 1. Run the Application
+
+```bash
+cd src/candlestick-visualization/Phase3_TechnicalAnalysis
 dotnet run
-
-
-The application window will open.
+````
 
 ---
 
-## Enter a Stock Symbol
+### 2. Load Data
 
-In the **Stock Symbol** input field, type a symbol such as:
-
-
-AAPL
-
-
-Other example symbols available in the dataset:
-
-- AMZN
-- ABBV
-- IBM
-- JPM
+* Click **"Load Datasets"**
+* The application scans the `/data` folder
+* Available stock symbols appear in the list
 
 ---
 
-## Choose a Time Period
+## 📊 Phase 1 Demo — Single Stock
 
-Use the **Period** dropdown to select the dataset resolution:
+### Steps:
 
-- Day
-- Week
-- Month
+1. Select one stock (e.g., AAPL)
+2. Choose:
 
-The application will automatically attempt to load a matching CSV file from the `data/` folder.
+   * Start Date
+   * End Date
+   * Period (Daily / Weekly / Monthly)
+3. Click **"Render Selected"**
 
-Example:
+### What to highlight:
 
-
-AAPL-Day.csv
-
-
----
-
-## Select a Date Range
-
-Use the **Start Date** and **End Date** selectors to filter the dataset.
-
-Example:
-
-Start Date: 2022-01-01  
-End Date: 2023-01-01
+* Candlestick chart shows price movement
+* Volume bars displayed below
+* Data table updates with filtered results
 
 ---
 
-## Load or Update Data
+## 📈 Phase 2 Demo — Multi-Stock Comparison
 
-Click one of the buttons:
+### Steps:
 
-### Load Data
-Loads the selected dataset into the application.
+1. Select multiple stocks (e.g., AAPL, AMZN, ABBV)
+2. Click **"Render Selected"**
 
-### Update Data
-Re-applies the selected date range filter to the currently loaded dataset.
+### What to highlight:
 
----
-
-## Visualization Output
-
-The application displays three main components:
-
-### Candlestick Chart
-
-Shows OHLC price data for the selected stock symbol.
-
-Each candlestick represents:
-
-- Opening price
-- Highest price
-- Lowest price
-- Closing price
-
-### Volume Chart
-
-Displays trading volume for the same time period using vertical bars.
-
-### Data Table
-
-Shows the raw stock data in tabular format including:
-
-- Date
-- OpeningPrice
-- MaximumPrice
-- MinimumPrice
-- ClosingPrice
-- Volume
+* Each stock appears in its own chart panel
+* Charts are stacked vertically
+* All charts share the same filters
+* Enables side-by-side comparison
 
 ---
 
-## Candlestick Interpretation
+## 📉 Phase 3 Demo — Technical Analysis
 
-Each candlestick represents one time interval (day/week/month).
+### Steps:
 
-Green candles indicate:
+1. Select at least one stock
+2. Enable:
 
+   * ✅ SMA (Simple Moving Average)
+   * ✅ EMA (Exponential Moving Average)
+3. Adjust periods (e.g., 20, 50)
+4. Click **"Render Selected"**
 
-ClosingPrice > OpeningPrice
+### What to highlight:
 
-
-Red candles indicate:
-
-
-ClosingPrice < OpeningPrice
-
-
-The vertical line (wick) shows the **high and low price range** during that period.
+* SMA and EMA lines overlay on candlestick chart
+* Smooth trend visualization
+* Ability to tweak indicator periods dynamically
 
 ---
 
-## Example Workflow
+## 💡 Key Talking Points
 
-1. Launch the application
-2. Enter `AAPL` as the stock symbol
-3. Select **Day** as the period
-4. Choose a start and end date
-5. Click **Load Data**
-6. Observe the candlestick chart and volume visualization
+* Built full pipeline from raw CSV → processed → visualized
+* Modular architecture enables easy feature expansion
+* Phase progression shows system scalability:
+
+  * Phase 1 → Visualization
+  * Phase 2 → Multi-stock scaling
+  * Phase 3 → Technical analysis
+* Mimics functionality found in real trading platforms
+
+---
+
+## 🧠 Example Use Case
+
+> "A user wants to compare AAPL and AMZN performance over the past year and identify trends using moving averages."
+
+Steps:
+
+* Select AAPL + AMZN
+* Set date range (1 year)
+* Enable SMA + EMA
+* Analyze crossover trends
+
+---
+
+## 🚀 Demo Conclusion
+
+This project demonstrates:
+
+* Data processing from financial datasets
+* Interactive UI design
+* Multi-entity visualization
+* Technical analysis integration
+
+---
+
+## 📌 Future Demo Ideas
+
+* Add RSI / MACD for deeper analysis
+* Highlight buy/sell signals
+* Integrate real-time stock data APIs
+
+```
+```
